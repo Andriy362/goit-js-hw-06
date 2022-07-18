@@ -14,3 +14,12 @@ const images = [
 ];
 
 const imagesList = document.querySelector(".gallery");
+
+const newImages = images
+  .map(
+    ({ url, alt }) =>
+      `<li class="item"><img src="${url}" alt="${alt}" width="400" height="350"></img></li>`
+  )
+  .join("");
+
+imagesList.insertAdjacentHTML("beforeend", newImages);
