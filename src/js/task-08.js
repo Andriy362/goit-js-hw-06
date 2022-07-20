@@ -5,20 +5,19 @@ form.addEventListener("submit", handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
 
-  const formData = new FormData(event.currentTarget);
-  console.log(formData);
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
 
-  formData.forEach((email, password) => {
-    console.log("почта", email);
-    console.log("пароль", password);
-  });
+  if (email.value === "" || password.value === "") {
+    const message = "Email and password not found!";
+    alert(message);
+  } else {
+    const formData = new FormData(event.currentTarget);
+    formData.forEach((value, name) => {
+      console.log(value);
+      console.log(name);
+    });
+  }
+  form.reset();
 }
-
-// const {
-//   elements: { email, password },
-// } = event.currentTarget;
-
-// if (email.value === "" || password.value === "") {
-// }
-// event.currentTarget.reset();
-// }
